@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> 
+    <script src="./dist/nova.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    
+  </head>
+  <body>
+
+    <nova-tabs>
+
+    </nova-tabs>
+
+    <script>
+        customElements.whenDefined("nova-tabs")
+      .then(_ => {
+        var tabsElement = document.querySelector('nova-tabs');
+        tabsElement.componentOnReady().then(instance => {
+          fetch('./assets/tabs.json')
+            .then(response => {
+              // Transform it to JSON
+              return response.json();
+            })
+            .then(json => {
+              //mandar json como prop
+              instance.datajson = json.data;
+              instance.confjson = json.configuration
+              // public api to add a callback on edit (close or add)
+              instance.onTabClick(function (keyIndex, event) {
+                console.log('onTabClick', keyIndex, event);
+              })
+              instance.onEdit((keyIndex, eventName) => {
+                console.log('onEdit', keyIndex, eventName);
+              })
+              instance.addTab({
+                "title": "New tab",
+                "icon": "plus-square",
+                "enable": true,
+                "addTab": true,
+                "content": "<p>Content of NewTab Pane</p><p>This is an added tab.</p>"
+              })
+              /*
+              instance.openTab(0);
+              instance.closeTab(0);
+              */
+
+            })
+            .catch(err => {
+              // If any error ocurred, pass it to the console
+              console.error(err)
+            })
+        })
+      })
+    
+    </script>
+ 
+ 
+  </body>
+</html>

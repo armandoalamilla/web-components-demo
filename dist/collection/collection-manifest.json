@@ -1,0 +1,17 @@
+{
+  "entries": [
+    "atoms\\nova-icon\\nova-icon.js",
+    "components\\nova-tabs\\nova-tabs.js",
+    "components\\nova-popover\\nova-popover.js",
+    "components\\nova-calendar\\nova-calendar.js",
+    "components\\nova-cascader\\nova-cascader.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "1.1.1",
+    "typescriptVersion": "3.5.2"
+  },
+  "collections": [],
+  "bundles": [],
+  "global": "global\\app.js"
+}
