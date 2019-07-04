@@ -266,7 +266,7 @@ export class NovaCalendar {
         // https://momentjs.com/docs/#/displaying/format/
         // let now = moment().format('dddd');
         return [
-            h("section", { class: this.card ? "calendar--card" : "" },
+            h("section", { class: this.card ? "calendar__container calendar--card" : "calendar__container" },
                 h("slot", null),
                 h("div", { class: "calendar__controls" },
                     this.content.configuration.fullscreen
@@ -295,10 +295,12 @@ export class NovaCalendar {
     static get is() { return "nova-calendar"; }
     static get encapsulation() { return "shadow"; }
     static get originalStyleUrls() { return {
-        "default": ["nova-calendar.scss"]
+        "default": ["nova-calendar.default.scss"],
+        "dark": ["nova-calendar.dark.scss"]
     }; }
     static get styleUrls() { return {
-        "default": ["nova-calendar.css"]
+        "default": ["nova-calendar.default.css"],
+        "dark": ["nova-calendar.dark.css"]
     }; }
     static get properties() { return {
         "content": {

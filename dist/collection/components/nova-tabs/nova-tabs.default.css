@@ -99,7 +99,7 @@ nova-icon {
   display: block;
 }
 
-.tab__panel {
+.horizontal .tab__panel {
   -webkit-animation-duration: 0.3s;
   -webkit-animation-name: slidein;
   -moz-animation-duration: 0.3s;
@@ -113,7 +113,7 @@ nova-icon {
 .closeTab {
   float: middle;
   cursor: pointer;
-  color: #dddbdb;
+  color: #d4d4d4;
   padding: 5px;
 }
 

@@ -14,7 +14,7 @@
 <body>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo"><i class="fas fa-terminal fa-xs"> Zero to Heroe </i></a>
+            <a id="logo-container" href="#" class="brand-logo"><i class="fas fa-terminal fa-xs"> Zero to Hero </i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="index.html">Cascader</a></li>
         <li><a href="tabs.html">Tabs</a></li>
@@ -52,13 +52,44 @@
       <div class="container">
         <div class="section">
     
-                <nova-calendar>
+                <nova-calendar card>
                         <slot name="header">
                           <h1>
                             Calendario
                           </h1> 
                         </slot>
                 </nova-calendar>
+
+                <br>
+                <br>
+
+                <nova-calendar id="cal_1" card mode="dark">
+                  <slot name="header">
+                    <h1>
+                      Welcome to the dark side 
+                    </h1> 
+                  </slot>
+                </nova-calendar>
+
+                <br>
+                <br>
+
+                <nova-calendar id="cal_2" mode="">
+                  <slot name="header">
+                    <p>
+                      <h4>Calendario</h4>
+                    </p> 
+                  </slot>
+                </nova-calendar>
+
+                <nova-calendar id="cal_3" mode="dark">
+                  <slot name="header">
+                    <p>
+                      <h4>Calendario - dark</h4>
+                    </p> 
+                  </slot>
+                </nova-calendar>
+    
     
           
     
@@ -69,7 +100,82 @@
           customElements.whenDefined("nova-calendar")
       .then(_ => {
         var calendarElement = document.querySelector('nova-calendar');
+        var calendarElement2 = document.getElementById("cal_1");
+        var calendarElement3 = document.getElementById("cal_2");
+        var calendarElement4 = document.getElementById("cal_3");
         calendarElement.componentOnReady().then(instance => {
+          fetch('./assets/calendar.json')
+            .then(response => {
+              // Transform it to JSON
+              return response.json();
+            })
+            .then(json => {
+              // Pass the prop
+              instance.content = json;
+              instance.toggleType('year');
+              let selected;
+              instance.onSelectValue( moment => {
+                console.log('onSelect',moment);
+                instance.changeValue(moment);
+              } );
+              instance.onChangeValue( moment => console.log('onChange',moment) );
+              instance.confjsonFull = json.configuration.fullscreen;
+            })
+            .catch(err => {
+              // If any error ocurred, pass it to the console
+              console.error(err)
+            })
+        })
+
+        calendarElement2.componentOnReady().then(instance => {
+          fetch('./assets/calendar.json')
+            .then(response => {
+              // Transform it to JSON
+              return response.json();
+            })
+            .then(json => {
+              // Pass the prop
+              instance.content = json;
+              instance.toggleType('year');
+              let selected;
+              instance.onSelectValue( moment => {
+                console.log('onSelect',moment);
+                instance.changeValue(moment);
+              } );
+              instance.onChangeValue( moment => console.log('onChange',moment) );
+              instance.confjsonFull = json.configuration.fullscreen;
+            })
+            .catch(err => {
+              // If any error ocurred, pass it to the console
+              console.error(err)
+            })
+        })
+
+        calendarElement3.componentOnReady().then(instance => {
+          fetch('./assets/calendar.json')
+            .then(response => {
+              // Transform it to JSON
+              return response.json();
+            })
+            .then(json => {
+              // Pass the prop
+              instance.content = json;
+              instance.toggleType('year');
+              let selected;
+              instance.onSelectValue( moment => {
+                console.log('onSelect',moment);
+                instance.changeValue(moment);
+              } );
+              instance.onChangeValue( moment => console.log('onChange',moment) );
+              instance.confjsonFull = json.configuration.fullscreen;
+            })
+            .catch(err => {
+              // If any error ocurred, pass it to the console
+              console.error(err)
+            })
+        })
+
+        calendarElement4.componentOnReady().then(instance => {
           fetch('./assets/calendar.json')
             .then(response => {
               // Transform it to JSON

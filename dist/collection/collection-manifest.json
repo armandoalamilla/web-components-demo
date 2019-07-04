@@ -1,9 +1,9 @@
 {
   "entries": [
-    "components\\nova-tabs\\nova-tabs.js",
-    "components\\nova-popover\\nova-popover.js",
-    "atoms\\nova-icon\\nova-icon.js",
     "components\\nova-calendar\\nova-calendar.js",
+    "components\\nova-tabs\\nova-tabs.js",
+    "atoms\\nova-icon\\nova-icon.js",
+    "components\\nova-popover\\nova-popover.js",
     "components\\nova-cascader\\nova-cascader.js"
   ],
   "compiler": {

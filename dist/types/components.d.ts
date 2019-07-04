@@ -92,6 +92,9 @@ export namespace Components {
     'trigger': "hover" | "focus" | "click";
   }
   interface NovaTabs {
+    /**
+    * Enables a button to add a new tabs to the list. Remove property to hide button.
+    */
     'addButton': boolean;
     /**
     * addTab
@@ -101,11 +104,26 @@ export namespace Components {
     * closeTab
     */
     'closeTab': (keyIndex: number) => Promise<void>;
-    'default': string;
+    /**
+    * Default initial active Tab index. Index range starts from 0.
+    */
+    'default': number;
+    /**
+    * Default tag string of new created tabs
+    */
     'defaultTag': string;
+    /**
+    * Default pane content of new created tabs
+    */
     'defaultText': string;
+    /**
+    * JS prefix
+    */
     'jsprefix': string;
-    'limit': string;
+    /**
+    * Maximum number of open tabs
+    */
+    'limit': number;
     /**
     * onEdit
     */
@@ -118,8 +136,17 @@ export namespace Components {
     * openTab
     */
     'openTab': (keyIndex: any, event?: UIEvent) => Promise<void>;
-    'position': string;
-    'type': string;
+    /**
+    * Orientation of tabs.
+    */
+    'position': "horizontal" | "vertical";
+    /**
+    * Basic style of tabs. 'Card' style will default position property to horizontal.
+    */
+    'type': "line" | "card";
+    /**
+    * Used to force update on the render. No value.
+    */
     'updater': boolean;
   }
 }
@@ -206,14 +233,41 @@ declare namespace LocalJSX {
     'trigger'?: "hover" | "focus" | "click";
   }
   interface NovaTabs extends JSXBase.HTMLAttributes<HTMLNovaTabsElement> {
+    /**
+    * Enables a button to add a new tabs to the list. Remove property to hide button.
+    */
     'addButton'?: boolean;
-    'default'?: string;
+    /**
+    * Default initial active Tab index. Index range starts from 0.
+    */
+    'default'?: number;
+    /**
+    * Default tag string of new created tabs
+    */
     'defaultTag'?: string;
+    /**
+    * Default pane content of new created tabs
+    */
     'defaultText'?: string;
+    /**
+    * JS prefix
+    */
     'jsprefix'?: string;
-    'limit'?: string;
-    'position'?: string;
-    'type'?: string;
+    /**
+    * Maximum number of open tabs
+    */
+    'limit'?: number;
+    /**
+    * Orientation of tabs.
+    */
+    'position'?: "horizontal" | "vertical";
+    /**
+    * Basic style of tabs. 'Card' style will default position property to horizontal.
+    */
+    'type'?: "line" | "card";
+    /**
+    * Used to force update on the render. No value.
+    */
     'updater'?: boolean;
   }
 

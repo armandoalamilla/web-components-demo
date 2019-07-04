@@ -6,18 +6,31 @@ import { KEYCODES } from '../../utils/utils';
  */
 export class NovaTabs {
     constructor() {
-        //Props
+        // Props
+        /** Used to force update on the render. No value. */
         this.updater = true;
+        /** Default pane content of new created tabs */
         this.defaultText = "tab";
+        /** Default tag string of new created tabs */
         this.defaultTag = "div";
-        this.default = null;
+        /** Default initial active Tab index. Index range starts from 0.*/
+        this.default = 0;
+        /** Basic style of tabs. 'Card' style will default position property to horizontal. */
+        this.type = "line";
+        /** Orientation of tabs. */
         this.position = "horizontal";
-        this.limit = "9";
+        /** Maximum number of open tabs */
+        this.limit = 9;
+        /** Enables a button to add a new tabs to the list. Remove property to hide button.*/
         this.addButton = false;
+        /** JS prefix */
         this.jsprefix = "nova";
         // States
+        /** Array of tab buttons */
         this._tabSlot = [];
+        /** Array of tab panels */
         this._panelSlot = [];
+        /** Current active tab key */
         this.activeKey = -1;
         // Callbacks
         this.onEditCallback = (_index, _event) => { };
@@ -158,15 +171,13 @@ export class NovaTabs {
             h("button", { style: this.addButton ? { display: "block" } : { display: "none" }, class: "addTab addTab_circulo", onClick: _ => this.addTab(...this.createNewTab()), onKeyPress: _ => this.addTab(...this.createNewTab()) }, "ADD"),
             //Tab buttons container
             h("section", { class: `tabs__container ${this.position === "horizontal" ? " horizontal" : " vertical"} ${this.type || ""}` },
-                h("ul", { class: "tabs__list", role: "tablist" },
-                    this._tabSlot.map((tab, index) => {
-                        const isDisabled = tab.getAttribute('disabled') === "true" ? true : false;
-                        const isSelected = this.activeKey === index;
-                        const isClosable = tab.getAttribute('closable') === "true" ? true : false;
-                        return (h("li", { role: "tab", id: `${this.jsprefix}-tab-${index}`, class: `tab__button ${isSelected ? " active" : ""} ${isDisabled ? "disabled" : ''}`, "aria-selected": isSelected ? "true" : "false", "aria-disabled": isDisabled ? "true" : "false", "aria-controls": `${this.jsprefix}-panel-${index}`, tabIndex: isDisabled ? -1 : 0, innerHTML: tab.outerHTML, onKeyDown: e => !isDisabled && this.handleKeyPress(index, e), onClick: event => !isDisabled && this.openTab(index, event) }, !isDisabled && isClosable &&
-                            h("span", { class: "tab__button__close", "aria-label": "close", onClick: _ => this.closeTab(index) }, "x")));
-                    }),
-                    ","),
+                h("ul", { class: "tabs__list", role: "tablist" }, this._tabSlot.map((tab, index) => {
+                    const isDisabled = tab.getAttribute('disabled') === "true" ? true : false;
+                    const isSelected = this.activeKey === index;
+                    const isClosable = tab.getAttribute('closable') === "true" ? true : false;
+                    return (h("li", { role: "tab", id: `${this.jsprefix}-tab-${index}`, class: `tab__button ${isSelected ? " active" : ""} ${isDisabled ? "disabled" : ''}`, "aria-selected": isSelected ? "true" : "false", "aria-disabled": isDisabled ? "true" : "false", "aria-controls": `${this.jsprefix}-panel-${index}`, tabIndex: isDisabled ? -1 : 0, innerHTML: tab.outerHTML, onKeyDown: e => !isDisabled && this.handleKeyPress(index, e), onClick: event => !isDisabled && this.openTab(index, event) }, !isDisabled && isClosable &&
+                        h("span", { class: "tab__button__close", "aria-label": "close", onClick: _ => this.closeTab(index) }, "x")));
+                })),
                 this._panelSlot.map((panel, index) => h("section", { class: `tab__panel ${this.activeKey === index ? "active" : ""}`, id: `${this.jsprefix}-panel-${index}`, innerHTML: panel.outerHTML }))),
             h("div", { hidden: true },
                 h("slot", { name: "tab" }),
@@ -197,7 +208,7 @@ export class NovaTabs {
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": ""
+                "text": "Used to force update on the render. No value."
             },
             "attribute": "updater",
             "reflect": false,
@@ -215,7 +226,7 @@ export class NovaTabs {
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": ""
+                "text": "Default pane content of new created tabs"
             },
             "attribute": "default-text",
             "reflect": false,
@@ -233,82 +244,83 @@ export class NovaTabs {
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": ""
+                "text": "Default tag string of new created tabs"
             },
             "attribute": "default-tag",
             "reflect": false,
             "defaultValue": "\"div\""
         },
         "default": {
-            "type": "string",
+            "type": "number",
             "mutable": false,
             "complexType": {
-                "original": "string",
-                "resolved": "string",
+                "original": "number",
+                "resolved": "number",
                 "references": {}
             },
             "required": false,
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": ""
+                "text": "Default initial active Tab index. Index range starts from 0."
             },
             "attribute": "default",
             "reflect": false,
-            "defaultValue": "null"
+            "defaultValue": "0"
         },
         "type": {
             "type": "string",
             "mutable": false,
             "complexType": {
-                "original": "string",
-                "resolved": "string",
+                "original": "\"line\" | \"card\"",
+                "resolved": "\"card\" | \"line\"",
                 "references": {}
             },
             "required": false,
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": ""
+                "text": "Basic style of tabs. 'Card' style will default position property to horizontal."
             },
             "attribute": "type",
-            "reflect": false
+            "reflect": false,
+            "defaultValue": "\"line\""
         },
         "position": {
             "type": "string",
             "mutable": false,
             "complexType": {
-                "original": "string",
-                "resolved": "string",
+                "original": "\"horizontal\" | \"vertical\"",
+                "resolved": "\"horizontal\" | \"vertical\"",
                 "references": {}
             },
             "required": false,
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": ""
+                "text": "Orientation of tabs."
             },
             "attribute": "position",
             "reflect": false,
             "defaultValue": "\"horizontal\""
         },
         "limit": {
-            "type": "string",
+            "type": "number",
             "mutable": false,
             "complexType": {
-                "original": "string",
-                "resolved": "string",
+                "original": "number",
+                "resolved": "number",
                 "references": {}
             },
             "required": false,
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": ""
+                "text": "Maximum number of open tabs"
             },
             "attribute": "limit",
             "reflect": false,
-            "defaultValue": "\"9\""
+            "defaultValue": "9"
         },
         "addButton": {
             "type": "boolean",
@@ -322,7 +334,7 @@ export class NovaTabs {
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": ""
+                "text": "Enables a button to add a new tabs to the list. Remove property to hide button."
             },
             "attribute": "add-button",
             "reflect": false,
@@ -340,7 +352,7 @@ export class NovaTabs {
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": ""
+                "text": "JS prefix"
             },
             "attribute": "jsprefix",
             "reflect": false,

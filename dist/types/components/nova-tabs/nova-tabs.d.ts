@@ -3,18 +3,30 @@
  * @author Arturo & Armando & Tarin
  */
 export declare class NovaTabs {
+    /** Used to force update on the render. No value. */
     updater: boolean;
+    /** Default pane content of new created tabs */
     defaultText: string;
+    /** Default tag string of new created tabs */
     defaultTag: string;
-    default: string;
-    type: string;
-    position: string;
-    limit: string;
+    /** Default initial active Tab index. Index range starts from 0.*/
+    default: number;
+    /** Basic style of tabs. 'Card' style will default position property to horizontal. */
+    type: "line" | "card";
+    /** Orientation of tabs. */
+    position: "horizontal" | "vertical";
+    /** Maximum number of open tabs */
+    limit: number;
+    /** Enables a button to add a new tabs to the list. Remove property to hide button.*/
     addButton: boolean;
+    /** JS prefix */
     jsprefix: string;
     el: HTMLElement;
+    /** Array of tab buttons */
     _tabSlot: any[];
+    /** Array of tab panels */
     _panelSlot: any[];
+    /** Current active tab key */
     activeKey: number;
     onEditCallback: (_index: number, _event: any) => void;
     onClickCallback: (_index: number, _event: any) => {};
