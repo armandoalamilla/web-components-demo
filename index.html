@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
 </head>
 <body>
   <nav class="white" role="navigation">
@@ -51,12 +52,80 @@
   <div class="container">
     <div class="section">
 
-      <h3>aqui va</h3>
+        <nova-cascader mode=""></nova-cascader>
+        <nova-cascader id="c2" mode="dark"></nova-cascader>
+        <br>
+        <br>
+        <br>
+        <br>
+        
 
       
 
     </div>
   </div>
+
+  <script>
+    customElements.whenDefined("nova-cascader")
+      .then(_ => {
+        var cascaderElement = document.querySelector('nova-cascader');
+        var cascaderElement2 = document.getElementById("c2");
+        cascaderElement.componentOnReady().then(instance => {
+          fetch('./assets/cascader.json')
+            .then(response => {
+              // Transform it to JSON
+              return response.json();
+            })
+            .then(json => {
+              // Pass the prop
+              instance.content = json;
+              instance.addCustomTrigger(document.querySelector('p'))
+              // Test public api to focus
+              instance.blurCascader();
+              // Test public api that adds a callback when popup is open or close
+              instance.onPopupChange(result => (console.log('popup', result)));
+              // Test public api that adds a callback when a cascader item is selected
+              instance.onCascaderSelect(result => (console.log('select', result)));
+            })
+            .catch(err => {
+              // If any error ocurred, pass it to the console
+              console.error(err)
+            })
+        })
+
+        cascaderElement2.componentOnReady().then(instance => {
+          fetch('./assets/cascader.json')
+            .then(response => {
+              // Transform it to JSON
+              return response.json();
+            })
+            .then(json => {
+              // Pass the prop
+              instance.content = json;
+              instance.addCustomTrigger(document.querySelector('p'))
+              // Test public api to focus
+              instance.blurCascader();
+              // Test public api that adds a callback when popup is open or close
+              instance.onPopupChange(result => (console.log('popup', result)));
+              // Test public api that adds a callback when a cascader item is selected
+              instance.onCascaderSelect(result => (console.log('select', result)));
+            })
+            .catch(err => {
+              // If any error ocurred, pass it to the console
+              console.error(err)
+            })
+        })
+
+
+      })
+
+
+
+
+
+
+
+  </script>
 
 
   
@@ -89,6 +158,7 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+  <script src="./dist/nova.js"></script>
 
   </body>
 </html>

@@ -1,0 +1,159 @@
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: black;
+  color: white;
+}
+
+nova-icon {
+  margin-right: 4px;
+}
+
+.addTab {
+  padding: 10px 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+  background: black;
+  font-size: 16px;
+  color: white;
+}
+
+.tabs__container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: black;
+  color: white;
+}
+.tabs__container.horizontal .tabs__list {
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-basis: 100%;
+  border-bottom: 1px solid #d4d4d4;
+}
+.tabs__container.horizontal .tabs__list .tab__button {
+  margin-right: 1em;
+}
+.tabs__container.horizontal .tabs__list .tab__button:not(.disabled).active {
+  color: #1890ff;
+  border-bottom: 3px solid #1890ff;
+}
+.tabs__container.card.horizontal .tabs__list .tab__button {
+  border: 1px solid #d4d4d4;
+  border-radius: 5% 5% 0 0;
+  background: rgba(212, 212, 212, 0.5);
+}
+.tabs__container.card.horizontal .tabs__list .tab__button:not(.disabled).active {
+  color: #1890ff;
+  background: white;
+  border-bottom: white solid 5px;
+}
+.tabs__container.vertical .tabs__list {
+  max-width: fit-content;
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex-direction: column;
+  border-right: 1px solid #d4d4d4;
+}
+.tabs__container.vertical .tabs__list .tab__button {
+  margin-bottom: 2em;
+}
+.tabs__container.vertical .tabs__list .tab__button:not(.disabled).active {
+  border-right: 3px solid #1890ff;
+}
+
+.tabs__list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tab__button {
+  padding: 0em 1.5em;
+  margin: 0;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.tab__button:not(.disabled) {
+  cursor: pointer;
+}
+.tab__button:not(.disabled):hover {
+  color: #1890ff;
+}
+
+.tab__button .tab__button__close {
+  font-size: 1.5em;
+  margin-left: 1em;
+}
+
+.tab__panel {
+  display: none;
+  min-height: 100px;
+}
+.tab__panel.active {
+  padding-left: 1em;
+  display: block;
+}
+
+.tab__panel {
+  -webkit-animation-duration: 0.3s;
+  -webkit-animation-name: slidein;
+  -moz-animation-duration: 0.3s;
+  -moz-animation-name: slidein;
+  -o-animation-duration: 0.3s;
+  -o-animation-name: slidein;
+  animation-duration: 0.3s;
+  animation-name: slidein;
+}
+
+.closeTab {
+  float: middle;
+  cursor: pointer;
+  color: #dddbdb;
+  padding: 5px;
+}
+
+@-webkit-keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+@-moz-keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+@-o-keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}

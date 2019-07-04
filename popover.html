@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
 </head>
 <body>
   <nav class="white" role="navigation">
@@ -51,7 +52,31 @@
       <div class="container">
         <div class="section">
     
-          <h3>aqui va</h3>
+               
+                <nova-popover trigger="click" location="top">
+                        <button class="waves-effect waves-light btn" slot="trigger">Click me top !</button>
+                        <p slot="title"> Hi ! </p>
+                        <p slot="content"> This is a popover</p>
+                        <p slot="close"> click here to close </p>
+                </nova-popover>
+
+                <br>
+                <br>
+                <br>
+
+                <nova-popover trigger="click" location="left" mode="dark">
+                        <button class="waves-effect waves-light btn" slot="trigger">Click me dark left !</button>
+                        <p slot="title"> Hi ! </p>
+                        <p slot="content"> This is a popover</p>
+                        <p slot="close"> click here to close </p>
+                </nova-popover>
+
+                <nova-popover trigger="click" location="botright" mode="dark">
+                        <button class="waves-effect waves-light btn" slot="trigger">Click me dark botright !</button>
+                        <p slot="title"> Hi ! </p>
+                        <p slot="content"> This is a popover</p>
+                        <p slot="close"> click here to close </p>
+                </nova-popover>
     
           
     
@@ -88,6 +113,7 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+  <script src="./dist/nova.js"></script>
 
   </body>
 </html>
